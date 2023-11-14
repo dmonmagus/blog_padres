@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 
 # Create your models here.
-class Entrada(models.model):
+class Entrada(models.Model):
     titulo = models.CharField(max_length=256)
     subtitulo = models.CharField(max_length=256)
     cuerpo = models.CharField(max_length=10000)
