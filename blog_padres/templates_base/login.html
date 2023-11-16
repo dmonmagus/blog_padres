@@ -1,0 +1,15 @@
+{% extends "padre.html" %}
+{% load static %}
+
+{% block background %}{% static 'assets/img/home-bg.jpg' %}{% endblock %}
+{% block headers %}
+    <h1>Login</h1>
+    <span class="subheading">Solo usuarios registrados</span>
+{% endblock %}
+{% block contenidocambiante %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Iniciar Sesión" />
+   </form>
+{% endblock contenidocambiante %}

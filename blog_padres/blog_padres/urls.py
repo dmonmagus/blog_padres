@@ -17,10 +17,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from blog import views
+from perfiles.views import registro, login_view, CustomLogoutView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.inicio, name= "Inicio"),
     path('about/', views.about, name= "Acerca"),
-    path('pages/', views.pages, name= "Articulos")
+    path('pages/', views.EntradaListView.as_view(), name= "Articulos"),
+    path('accounts/login/', login_view, name="login"),
+    path('accounts/signup/', registro, name= "Registro"),
+    path('accounts/logout/', CustomLogoutView.as_view(), name="logout"),
+    path('pages/new-post/', views.EntradaCreateView.as_view(), name="entrada"),
+    path('pages/<slug:slug>/', views.EntradaDetailView.as_view(), name= "ver_articulo"),
+    path('editar-post/<slug:slug>/', views.EntradaUpdateView.as_view(), name= "editar_articulo"),
+    path('borrar-post/<slug:slug>/', views.EntradaDeleteView.as_view(), name= "borrar_articulo")    
 ]

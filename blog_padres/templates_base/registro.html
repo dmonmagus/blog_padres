@@ -1,0 +1,15 @@
+{% extends "padre.html" %}
+{% load static %}
+
+{% block background %}{% static 'assets/img/home-bg.jpg' %}{% endblock %}
+{% block headers %}
+    <h1>Registro de usuarios</h1>
+    <span class="subheading">Registrate para compartir articulos</span>
+{% endblock %}
+{% block contenidocambiante %}
+<form method="post">
+ {% csrf_token %}
+ {{ form.as_p }}
+ <input type="submit" value="Registrarse" />
+</form>
+{% endblock contenidocambiante %}

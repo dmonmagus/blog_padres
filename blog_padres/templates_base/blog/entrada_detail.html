@@ -1,0 +1,19 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block background %}{{object.image}}{% endblock %}
+{% block headers %}
+    <h1>{{object.titulo}}</h1>
+    <span class="subheading">{{object.subtitulo}}</span>
+{% endblock %}
+{% block contenidocambiante %}
+<p>{{object.cuerpo}}</p>
+<br>
+<p><strong:>Autor: </strong:>{{object.autor}}</p>
+<p>Creado el: {{object.fecha}}</p>
+<br>
+<a href="{% url 'Articulos' %}">Volver a articulos</a>
+
+
+{% endblock %}

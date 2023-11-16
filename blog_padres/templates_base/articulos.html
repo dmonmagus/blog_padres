@@ -8,6 +8,40 @@
     <span class="subheading">Contenido para padres en busqueda de la paternidad efectiva</span>
 {% endblock %}
 {% block contenidocambiante %}
-
+<section>
+    <div>
+      {% if object_list|length == 0 %}
+      <h2>No hay entradas aún</h2>
+      {% else %}                
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>Titulo</th>
+            <th>Descripcion</th>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          {% for entrada in object_list %}
+          <tr>
+            <td>{{ entrada.titulo }}</td>
+            <td>{{ entrada.subtitulo }}</td>
+            <td>
+              <a href="{% url 'ver_articulo' entrada.slug  %}">Ver</a>
+            </td>
+            <td>
+              <a href="{% url 'editar_articulo' entrada.slug %}">Editar</a>
+            </td>
+            <td>
+              <a href="{% url 'borrar_articulo' entrada.slug %}">Eliminar</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+    </div>
+   </section>
+   
 
 {% endblock %}

@@ -1,0 +1,16 @@
+{% extends "padre.html" %}
+{% load static %}
+
+{% block background %}{% static 'assets/img/home-bg.jpg' %}{% endblock %}
+{% block headers %}
+    <h1>Crea un nuevo blog</h1>
+    <span class="subheading">Registrate para compartir articulos</span>
+{% endblock %}
+{% block contenidocambiante %}
+<form method="post">
+ {% csrf_token %}
+ {{ formulario.as_p }}
+ {{ formulario.errors }}
+ <input type="submit" value="Enviar" />
+</form>
+{% endblock contenidocambiante %}
