@@ -17,7 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from blog import views
-from perfiles.views import registro, login_view, CustomLogoutView
+from perfiles.views import registro, login_view, CustomLogoutView, MiPerfilUpdateView
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -31,5 +33,7 @@ urlpatterns = [
     path('pages/new-post/', views.EntradaCreateView.as_view(), name="entrada"),
     path('pages/<slug:slug>/', views.EntradaDetailView.as_view(), name= "ver_articulo"),
     path('editar-post/<slug:slug>/', views.EntradaUpdateView.as_view(), name= "editar_articulo"),
-    path('borrar-post/<slug:slug>/', views.EntradaDeleteView.as_view(), name= "borrar_articulo")    
+    path('borrar-post/<slug:slug>/', views.EntradaDeleteView.as_view(), name= "borrar_articulo"),
+    path('accounts/profile', MiPerfilUpdateView.as_view(), name= "editar_perfil")    
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

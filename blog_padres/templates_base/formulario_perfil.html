@@ -1,0 +1,17 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block background %}{% static 'assets/img/home-bg.jpg' %}{% endblock %}
+{% block headers %}
+    <h1>Bienvenido {{ object.username }}</h1>
+    <span class="subheading">Aqui puedes editar tus datos</span>
+{% endblock %}
+{% block contenidocambiante %}
+<h3>Editar datos:</h3>
+<form method="post">
+ {% csrf_token %}
+ {{ form.as_p }}
+ <input type="submit" value="Salvar"/>
+</form>
+{% endblock %}
