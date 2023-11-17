@@ -7,7 +7,7 @@
     <span class="subheading">Registrate para compartir articulos</span>
 {% endblock %}
 {% block contenidocambiante %}
-<form method="post">
+<form method="post" enctype="multipart/form-data">
  {% csrf_token %}
  {{ formulario.as_p }}
  {{ formulario.errors }}

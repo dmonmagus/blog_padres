@@ -2,12 +2,12 @@
 
 {% load static %}
 
-{% block background %}{{object.image}}{% endblock %}
+{% block background %}{{object.imagen.url}}{% endblock %}
 {% block headers %}
     <h1>Captura tu articulo</h1>
 {% endblock %}
 {% block contenidocambiante %}
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Guardar" />

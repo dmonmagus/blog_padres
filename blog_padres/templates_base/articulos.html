@@ -25,9 +25,9 @@
           {% for entrada in object_list %}
           <tr>
             <td>{{ entrada.titulo }}</td>
-            <td>{{ entrada.subtitulo }}</td>
+            <td>{{ entrada.cuerpo|truncatewords:3 }}</td>
             <td>
-              <a href="{% url 'ver_articulo' entrada.slug  %}">Ver</a>
+              <a href="{% url 'ver_articulo' entrada.slug  %}">Leer mas</a>
             </td>
             <td>
               <a href="{% url 'editar_articulo' entrada.slug %}">Editar</a>

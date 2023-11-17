@@ -44,7 +44,7 @@ def pages(request):
 
 def crear_entrada(request):
    if request.method == "POST":
-       formulario = EntradaFormulario(request.POST)
+       formulario = EntradaFormulario(request.POST, request.FILES)
 
        if formulario.is_valid():
            data = formulario.cleaned_data  # es un diccionario
