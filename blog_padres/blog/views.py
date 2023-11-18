@@ -3,7 +3,7 @@ from django.db import models
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
 from django.template import loader
-from django.http import HttpResponse
+from django.http import HttpRequest, HttpResponse
 from blog.models import Entrada
 from blog.forms import EntradaFormulario
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
@@ -11,6 +11,8 @@ from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
+import os
+from django.conf import settings
 
 # Create your views here.
 def inicio(request):
@@ -104,3 +106,9 @@ class EntradaUpdateView(LoginRequiredMixin, UpdateView):
 class EntradaDeleteView(LoginRequiredMixin, DeleteView):
     model = Entrada
     success_url = reverse_lazy('Articulos')
+
+    def delete(self, request, *args, **kwargs):
+        instancia = self.get_object()
+        if len (instancia.imagen) > 0:
+            os.remove(instancia.imagen.path)
+        return super().delete(request, *args, **kwargs)

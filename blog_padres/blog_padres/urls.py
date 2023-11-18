@@ -15,11 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.conf.urls import include
 from django.urls import path
 from blog import views
-from perfiles.views import registro, login_view, CustomLogoutView, MiPerfilUpdateView
+from perfiles.views import registro, login_view, CustomLogoutView, MiPerfilUpdateView, agregar_avatar
 from django.conf import settings
 from django.conf.urls.static import static
+
 
 
 urlpatterns = [
@@ -34,6 +36,8 @@ urlpatterns = [
     path('pages/<slug:slug>/', views.EntradaDetailView.as_view(), name= "ver_articulo"),
     path('editar-post/<slug:slug>/', views.EntradaUpdateView.as_view(), name= "editar_articulo"),
     path('borrar-post/<slug:slug>/', views.EntradaDeleteView.as_view(), name= "borrar_articulo"),
-    path('accounts/profile', MiPerfilUpdateView.as_view(), name= "editar_perfil")    
+    path('accounts/profile', MiPerfilUpdateView.as_view(), name= "editar_perfil"),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('agregar-avatar/', agregar_avatar, name="agregar_avatar")   
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

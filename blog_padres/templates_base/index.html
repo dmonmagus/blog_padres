@@ -2,12 +2,13 @@
 
 {% load static %}
 
-{% block background %}{% static 'assets/img/home-bg.jpg' %}{% endblock %}
+{% block background %}{% if user.avatar.imagen %}{{user.avatar.imagen.url}}{% else %}{% static 'assets/img/home-bg.jpg' %}{% endif %}{% endblock %}
 {% block headers %}
     <h1>Blog de padres</h1>
     <span class="subheading">Contenido para padres en busqueda de la paternidad efectiva</span>
 {% endblock %}
 {% block contenidocambiante %}
+<h2>Bienvenido {{user.first_name}}</h2>
 
 
 {% endblock %}

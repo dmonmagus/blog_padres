@@ -2,13 +2,13 @@
 
 {% load static %}
 
-{% block background %}{{object.imagen.url}}{% endblock %}
+{% block background %}{% if object.imagen %}{{object.imagen.url}}{% else %}{% endif %}{% endblock %}
 {% block headers %}
     <h1>{{object.titulo}}</h1>
     <span class="subheading">{{object.subtitulo}}</span>
 {% endblock %}
 {% block contenidocambiante %}
-<p>{{object.cuerpo|linebreaks}}</p>
+{{ object.cuerpo|safe }}
 <br>
 <p><strong:>Autor: </strong:>{{object.autor}}</p>
 <p>Creado el: {{object.fecha}}</p>

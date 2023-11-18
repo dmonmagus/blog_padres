@@ -1,14 +1,14 @@
 {% extends "padre.html" %}
 
 {% load static %}
-
-{% block background %}{{object.imagen.url}}{% endblock %}
+{% block background %}{% if object.imagen %}{{object.imagen.url}}{% else %}{% endif %}{% endblock %}
 {% block headers %}
     <h1>Captura tu articulo</h1>
 {% endblock %}
 {% block contenidocambiante %}
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
+    {{ form.media }}
     {{ form.as_p }}
     <input type="submit" value="Guardar" />
    </form>

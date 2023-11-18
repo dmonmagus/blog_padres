@@ -1,12 +1,13 @@
 from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 class Entrada(models.Model):
     titulo = models.CharField(max_length=256, blank=False)
     subtitulo = models.CharField(max_length=256, blank=False)
-    cuerpo = models.TextField()
+    cuerpo = RichTextField()
     autor = models.CharField(max_length=256, null= True)
     fecha = models.DateField(auto_now_add=True, null=True)
     imagen = models.ImageField(upload_to='media/', blank=True, null=True)

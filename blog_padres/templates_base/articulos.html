@@ -25,7 +25,7 @@
           {% for entrada in object_list %}
           <tr>
             <td>{{ entrada.titulo }}</td>
-            <td>{{ entrada.cuerpo|truncatewords:3 }}</td>
+            <td>{{ entrada.cuerpo|truncatewords:3|safe }}</td>
             <td>
               <a href="{% url 'ver_articulo' entrada.slug  %}">Leer mas</a>
             </td>
