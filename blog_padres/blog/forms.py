@@ -1,6 +1,8 @@
 from django import forms
 from django.utils import timezone
 from ckeditor.widgets import CKEditorWidget
+from django.contrib.auth.models import User
+from django.db import models
 
 
 class EntradaFormulario(forms.Form):
@@ -10,3 +12,5 @@ class EntradaFormulario(forms.Form):
     autor = forms.CharField(max_length=256)
     fecha = forms.DateField()
     imagen = forms.ImageField(required=False)
+
+

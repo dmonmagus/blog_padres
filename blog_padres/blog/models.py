@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Entrada(models.Model):
@@ -12,6 +13,7 @@ class Entrada(models.Model):
     fecha = models.DateField(auto_now_add=True, null=True)
     imagen = models.ImageField(upload_to='media/', blank=True, null=True)
     slug = models.SlugField(unique=True, default='default-slug')
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     def __len__(self):
         return Entrada.objects.count()

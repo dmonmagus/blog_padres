@@ -30,10 +30,10 @@
               <a href="{% url 'ver_articulo' entrada.slug  %}">Leer mas</a>
             </td>
             <td>
-              <a href="{% url 'editar_articulo' entrada.slug %}">Editar</a>
+              {% if entrada.usuario == user %}<a href="{% url 'editar_articulo' entrada.slug %}">Editar</a>{% else %}{% endif %}
             </td>
             <td>
-              <a href="{% url 'borrar_articulo' entrada.slug %}">Eliminar</a>
+              {% if entrada.usuario == user %}<a href="{% url 'borrar_articulo' entrada.slug %}">Eliminar</a>{% else %}{% endif %}
             </td>
           </tr>
           {% endfor %}

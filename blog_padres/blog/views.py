@@ -82,14 +82,12 @@ class EntradaCreateView(LoginRequiredMixin, CreateView):
     # Así se guarda la info del creador en vistas basadas en clase
     def form_valid(self, form):
         """If the form is valid, save the associated model."""
+        form.instance.usuario = self.request.user
         self.object = form.save()
-        # Agregamos la información del creador
-        self.object.creador = self.request.user
-        self.object.save()
         return super().form_valid(form)
 
 
-class EntradaDetailView(LoginRequiredMixin, DetailView):
+class EntradaDetailView(DetailView):
     model = Entrada
     success_url = reverse_lazy('Articulos')
 
